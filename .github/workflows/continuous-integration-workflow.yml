@@ -11,9 +11,6 @@ jobs:
       - name: Build Code
         run: dotnet build
         
-      - name: test
-        run: ls
-        
       - name: Install & build
         working-directory: ./DotnetTemplate.Web
         run: |
