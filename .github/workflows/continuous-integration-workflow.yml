@@ -2,15 +2,22 @@
 on: [push]
 
 jobs:
-  build:
-    name: Build and test
+  build-cs:
+    name: Build and test C#
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         
-      - name: Build Code
-        run: dotnet build
-        
+      - name: Build and Test Code
+        run: |
+          dotnet build
+          dotnet test
+  build-ts:
+    name: Build and test Typescript
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
       - name: Install & build
         working-directory: ./DotnetTemplate.Web
         run: |
@@ -18,6 +25,3 @@ jobs:
           npm run build
           npm t
           npm run lint
-
-      - name: C# Tests
-        run: dotnet test
