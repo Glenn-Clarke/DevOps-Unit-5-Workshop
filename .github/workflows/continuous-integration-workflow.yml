@@ -13,11 +13,11 @@ jobs:
         
       - name: Install & build
         working-directory: ./DotnetTemplate.Web
-        run: cd DotnetTemplate.Web && npm ci && npm run build
+        run: |
+          npm ci
+          npm run build
+          npm t
+          npm run lint
 
-      - name: Typescript linter & tests
-        working-directory: ./DotnetTemplate.Web
-        run: npm t && npm run lint
-        
       - name: C# Tests
         run: dotnet test
