@@ -15,7 +15,7 @@ jobs:
         run: cd DotnetTemplate.Web && npm ci && npm run build
 
       - name: Typescript linter & tests
-        run: npm t && npm run lint
+        run: cd DotnetTemplate.Web && npm t && npm run lint
         
       - name: C# Tests
-        run: cd .. && dotnet test
+        run: dotnet test
