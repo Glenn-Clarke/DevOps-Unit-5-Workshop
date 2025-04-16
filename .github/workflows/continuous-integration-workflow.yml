@@ -7,6 +7,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Hello world       # Name of step
-        run: echo 'Hello world' # Command to run
+        
+      - name: Build Code
+        run: dotnet build
+        
+      - name: Install & build
+        run: cd DotnetTemplate.Web && npm ci && npm run build
+        
+      - name: C# Tests
+        run: cd .. && dotnet test
+        
+      - name: Typescript linter & tests
+        run: cd DotnetTemplate.Web && npm t && npm run lint
